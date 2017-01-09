@@ -40,7 +40,7 @@ class DictionaryModel extends \Nette\Object implements IDictionaryModel {
 	}
 
 	private function load(){
-		$this->dictionary = $this->cache->load('dictionary');
+		$this->dictionary = $this->cache ? $this->cache->load('dictionary') : null;
 		if($this->dictionary !== null)
 			return;
 		$langs = array();
