@@ -56,6 +56,7 @@ class DictionaryModel extends \Nette\Object implements IDictionaryModel {
 			}
 			$this->dictionary[$row->id] = $data;
 		}
+		$this->dictionary = $this->dictionary === null ? array() : $this->dictionary;
 		if($this->cache)
 			$this->cache->save('dictionary', $this->dictionary, array(
 				Cache::EXPIRE => '1 hour'
