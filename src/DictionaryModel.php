@@ -71,7 +71,6 @@ class DictionaryModel extends \Nette\Object implements IDictionaryModel {
 		} catch (UniqueConstraintViolationException $e){
 
 		}
-
 	}
 
 }

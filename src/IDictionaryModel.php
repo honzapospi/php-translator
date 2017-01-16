@@ -14,8 +14,16 @@ namespace JP\Translator;
 interface IDictionaryModel  {
 
 	/**
+	 * Get dictionary list
 	 * @return array
 	 */
 	public function getDictionary();
+
+	/**
+	 * Add new term to dictionary
+	 * @param $term
+	 * @return mixed
+	 */
+	public function addTerm($term);
 	
 }
