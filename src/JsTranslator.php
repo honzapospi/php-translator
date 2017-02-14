@@ -27,7 +27,7 @@ class JsTranslator extends \Nette\Object {
 			throw new \InvalidArgumentException('Language is required to render translator.');
 		$container = Html::el('script');
 		$js = 'var dictionary = '.Json::encode($this->model->getDictionary())."\n";
-		$js .= "var lang = '".$this->lang."';\n";
+		$js .= "var LANG = '".$this->lang."';\n";
 		$js .= file_get_contents(__DIR__.'/translator.js');
 		$container->setText($js);
 		echo $container;

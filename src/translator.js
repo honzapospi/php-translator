@@ -12,4 +12,5 @@ Translator.prototype.translateTo = function (msg, lang) {
 }
 
 var JP = JP || {};
-JP.translator = new Translator(dictionary, lang);
+JP.translator = new Translator(dictionary, LANG);
+JP.LANG = LANG;
