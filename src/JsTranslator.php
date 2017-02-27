@@ -13,9 +13,19 @@ class JsTranslator extends \Nette\Object {
 
 	private $model;
 	private $lang;
+	private $devMode;
+	private $link;
 
 	public function __construct(IDictionaryModel $model) {
 		$this->model = $model;
+	}
+
+	public function setLingAddTranslation($link){
+		$this->link = $link;
+	}
+
+	public function setDevelopmentMode($bool){
+		$this->devMode = $bool;
 	}
 
 	public function setLanguage($code){
@@ -29,8 +39,11 @@ class JsTranslator extends \Nette\Object {
 		$js = 'var dictionary = '.Json::encode($this->model->getDictionary())."\n";
 		$js .= "var LANG = '".$this->lang."';\n";
 		$js .= file_get_contents(__DIR__.'/translator.js');
+		if($this->devMode){
+			$js .= "\nvar LINK_ADD_TRANSLATION = '".$this->link."';\n";
+			$js .= file_get_contents(__DIR__.'/dev.translator.js')."\n";
+		}
 		$container->setText($js);
 		echo $container;
 	}
-
 }

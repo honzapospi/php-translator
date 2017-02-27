@@ -1,6 +1,7 @@
 var Translator = function (dict, lang) {
     this.dictionary = dict;
     this.lang = lang;
+    this.eventOnTranslate = [];
 }
 
 Translator.prototype.translate = function (msg, count) {
@@ -8,6 +9,10 @@ Translator.prototype.translate = function (msg, count) {
 }
 
 Translator.prototype.translateTo = function (msg, lang) {
+    var self = this;
+    this.eventOnTranslate.map(function (callback) {
+        callback(self, msg, lang);
+    });
     if(!msg)
         throw new Error('Message to translate can not be empty.');
     if(msg.substr(0, 3) != 'tr_')
@@ -17,6 +22,10 @@ Translator.prototype.translateTo = function (msg, lang) {
         return msg;
     }
     return this.dictionary[msg][lang];
+}
+
+Translator.prototype.onTranslate = function(callback){
+    this.eventOnTranslate.push(callback);
 }
 
 var JP = JP || {};
