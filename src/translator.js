@@ -21,7 +21,10 @@ Translator.prototype.translateTo = function (msg, lang) {
         console.log('Missing translation for '+msg+' in '+lang);
         return msg;
     }
-    return this.dictionary[msg][lang];
+    if(this.dictionary[msg][lang])
+        return this.dictionary[msg][lang];
+    console.log('Missing translation for '+msg+' in '+lang);
+    return msg;
 }
 
 Translator.prototype.onTranslate = function(callback){

@@ -4,10 +4,8 @@ JP.translator.onTranslate(function(translator, msg, lang){
     if(msg.substr(0, 3) != 'tr_')
         return msg;
     if(!translator.dictionary[msg]){
-        if(!LINK_ADD_TRANSLATION)
+        if(!JP.LINK_ADD_TRANSLATION)
             alert('Link to add translation is missing.');
-        $.get(LINK_ADD_TRANSLATION+msg, function (response, status) {
-
-        });
+        $.get(JP.LINK_ADD_TRANSLATION, {addToDictionary: msg});
     }
 })

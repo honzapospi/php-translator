@@ -40,7 +40,7 @@ class JsTranslator extends \Nette\Object {
 		$js .= "var LANG = '".$this->lang."';\n";
 		$js .= file_get_contents(__DIR__.'/translator.js');
 		if($this->devMode){
-			$js .= "\nvar LINK_ADD_TRANSLATION = '".$this->link."';\n";
+			$js .= "\nJP.LINK_ADD_TRANSLATION = '".$this->link."';\n";
 			$js .= file_get_contents(__DIR__.'/dev.translator.js')."\n";
 		}
 		$container->setText($js);
