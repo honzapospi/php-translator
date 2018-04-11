@@ -2,6 +2,7 @@
 namespace JP\Translator;
 use Nette\Utils\Html;
 use Nette\Utils\Json;
+use Nette\SmartObject;
 
 /**
  * Copyright (c) Jan Pospisil (http://www.jan-pospisil.cz)
@@ -9,7 +10,8 @@ use Nette\Utils\Json;
  * @author Jan Pospisil
  */
 
-class JsTranslator extends \Nette\Object {
+class JsTranslator {
+	use SmartObject;
 
 	private $model;
 	private $lang;

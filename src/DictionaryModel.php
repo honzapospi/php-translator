@@ -4,6 +4,7 @@ use Nette\Caching\Cache;
 use Nette\Caching\IStorage;
 use Nette\Database\Context;
 use Nette\Database\UniqueConstraintViolationException;
+use Nette\SmartObject;
 
 /**
  * Copyright (c) Jan Pospisil (http://www.jan-pospisil.cz)
@@ -11,7 +12,8 @@ use Nette\Database\UniqueConstraintViolationException;
  * @author Jan Pospisil
  */
 
-class DictionaryModel extends \Nette\Object implements IDictionaryModel {
+class DictionaryModel implements IDictionaryModel {
+	use SmartObject;
 
 	private $dictionary;
 	private $context;

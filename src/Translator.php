@@ -2,13 +2,16 @@
 
 namespace JP\Translator;
 
+use Nette\SmartObject;
+
 /**
  * Copyright (c) Jan Pospisil (http://www.jan-pospisil.cz)
  * Translator
  * @author Jan Pospisil
  */
 
-class Translator extends \Nette\Object {
+class Translator {
+	use SmartObject;
 
 	public static $prefix = 'tr_';
 	private $dictionary;
@@ -23,7 +26,7 @@ class Translator extends \Nette\Object {
 		$this->lang = $lang;
 	}
 
-	function translate($message, $count = NULL) {
+	function translate(String $message, $count = NULL) {
 		if($this->dictionary === NULL)
 			$this->dictionary = $this->model->getDictionary();
 		if(substr($message, 0, strlen(self::$prefix)) != self::$prefix)
