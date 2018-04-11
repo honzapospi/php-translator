@@ -26,7 +26,7 @@ class Translator {
 		$this->lang = $lang;
 	}
 
-	function translate(String $message, $count = NULL) {
+	function translate($message, $count = NULL) {
 		if($this->dictionary === NULL)
 			$this->dictionary = $this->model->getDictionary();
 		if(substr($message, 0, strlen(self::$prefix)) != self::$prefix)
